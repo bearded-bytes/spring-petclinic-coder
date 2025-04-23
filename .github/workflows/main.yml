@@ -22,7 +22,6 @@ jobs:
         uses: coder/start-workspace-action@v0.1.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          trigger-phrase: "@coder"
           github-username: >-
             ${{
               (github.event_name == 'issue_comment' && github.event.comment.user.login) || 
