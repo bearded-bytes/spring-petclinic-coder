@@ -12,7 +12,6 @@ permissions:
 jobs:
   comment:
     runs-on: ubuntu-latest
-    # You control the trigger conditions:
     if: >-
       (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@coder')) || 
       (github.event_name == 'issues' && contains(github.event.issue.body, '@coder'))
@@ -23,6 +22,7 @@ jobs:
         uses: coder/start-workspace-action@v0.1.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          trigger-phrase: "@coder"
           github-username: >-
             ${{
               (github.event_name == 'issue_comment' && github.event.comment.user.login) || 
@@ -31,7 +31,15 @@ jobs:
           coder-url: ${{ secrets.CODER_URL }}
           coder-token: ${{ secrets.CODER_TOKEN }}
           template-name: ${{ secrets.CODER_TEMPLATE_NAME }}
+          workspace-name: ${{ github.respositorty }}-issue-${{ github.event.issue.number }}
           parameters: |-
-            Coder Image: codercom/oss-dogfood:latest
-            Coder Repository Base Directory: "~"
-            AI Code Prompt: "Use the gh CLI tool to read the details of issue https://github.com/${{ github.repository }}/issues/${{ github.event.issue.number }} and then address it."
+            AI Prompt: |
+              Use the gh CLI tool to read the details of issue https://github.com/${{ github.repository }}/issues/${{ github.event.issue.number }} and then address it.
+              
+              Then, submit a pull request. In the PR body, after your description, be sure to link:
+                - Your workspace URL in the body (e.g. https://dev.coder.com/@bpmct/brown-alpaca-18)
+                - A preview appp URL (e.g. https://codercom-preview--dev--issue-74--bpmct--apps.dev.coder.com/).
+                - The issue number you are fixing
+                Read the `env` vars in your workspace to get the proper username and workspace name.
+              
+                When comments occur, first respond and then start working on their feedback. Push your changes, then watch the PR. Keep that loop until you stop recieving comments and the user merges the PR.
