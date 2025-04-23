@@ -1,5 +1,5 @@
 <!doctype html>
-<html th:fragment="layout (template, menu)">
+<html th:fragment="layout (template, menu)" data-bs-theme="light">
 
 <head>
 
@@ -67,6 +67,14 @@
           </li>
 
         </ul>
+        
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <button id="theme-toggle" class="btn btn-link nav-link" aria-label="Toggle dark mode">
+              <span class="fa fa-moon-o" aria-hidden="true"></span>
+            </button>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -88,6 +96,7 @@
   </div>
 
   <script th:src="@{/webjars/bootstrap/dist/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{/resources/js/theme-toggle.js}"></script>
 
 </body>
 
