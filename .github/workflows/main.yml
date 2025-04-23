@@ -22,7 +22,7 @@ jobs:
       - name: Start Coder workspace
         uses: coder/start-workspace-action@v0.1.0
         with:
-          github-token: ${{ secrets.TOKEN_GITHUB }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           github-username: >-
             ${{
               (github.event_name == 'issue_comment' && github.event.comment.user.login) || 
