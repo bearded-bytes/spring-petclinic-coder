@@ -35,9 +35,11 @@ jobs:
               Use the gh CLI tool to read the details of issue https://github.com/${{ github.repository }}/issues/${{ github.event.issue.number }} and then address it.
               
               Then, submit a pull request. In the PR body, after your description, be sure to link:
-                - Your workspace URL in the body (e.g. run `env | grep CODER) | and a URL like https://preview--dev--CODER_WORKSPACE_NAME--CODER_WORKSPACE_OWNER--apps.dev.coder.com/ but with it replaces with the proper env vars. That proxies port 3000.)
-                - A preview appp URL using the url created from instructions above. 
+                - Your workspace URL in the body (e.g. https://dev.coder.com/@bpmct/brown-alpaca-18)
+                - A preview appp URL (e.g. https://nicky-pike.demo.coder.com/@nicky/pirate-cat-website.main/apps/preview/).
                 - The issue number you are fixing
                 Read the `env` vars in your workspace to get the proper username and workspace name.
               
-                When comments occur, first respond and then start working on their feedback. Push your changes.  End with a task stating "PR Submitting, waiting for approval"
+                When comments occur, first respond and then start working on their feedback. Push your changes, then watch the PR.  End with a task stating "PR Submitted, waiting for approval"
+
+
