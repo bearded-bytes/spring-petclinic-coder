@@ -42,4 +42,4 @@ jobs:
                 - The issue number you are fixing
                 Read the `env` vars in your workspace to get the proper username and workspace name.
               
-                When comments occur, first respond and then start working on their feedback. Push your changes, then watch the PR. Keep that loop until you stop recieving comments and the user merges the PR.
+                When comments occur, first respond and then start working on their feedback. Push your changes.  End with a task stating "PR Submitting, waiting for approval"
