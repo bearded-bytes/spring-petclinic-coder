@@ -1,4 +1,4 @@
-tname: Start Workspace On Issue Creation or Comment
+name: Start Workspace On Issue Creation or Comment
 
 on:
   issues:
