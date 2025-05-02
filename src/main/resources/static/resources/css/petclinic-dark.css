@@ -1,0 +1,123 @@
+/* Dark mode styles */
+:root.dark-mode {
+  --background-color: #1a1a1a;
+  --text-color: #f0f0f0;
+  --navbar-bg: #2c2c2c;
+  --card-bg: #2c2c2c;
+  --border-color: #444;
+  --link-color: #77b8ff;
+  --link-hover-color: #99ccff;
+  --table-stripe: #333;
+  --table-hover: #444;
+  --input-bg: #333;
+  --input-border: #555;
+  --btn-primary-bg: #0066cc;
+  --btn-primary-border: #0055aa;
+  --btn-success-bg: #2a9d5c;
+  --btn-success-border: #218a4f;
+}
+
+:root:not(.dark-mode) {
+  --background-color: #fff;
+  --text-color: #333;
+  --navbar-bg: #34302d;
+  --card-bg: #fff;
+  --border-color: #ddd;
+  --link-color: #3c8dbc;
+  --link-hover-color: #3c8dbc;
+  --table-stripe: #f9f9f9;
+  --table-hover: #f5f5f5;
+  --input-bg: #fff;
+  --input-border: #ccc;
+  --btn-primary-bg: #3c8dbc;
+  --btn-primary-border: #367fa9;
+  --btn-success-bg: #5cb85c;
+  --btn-success-border: #4cae4c;
+}
+
+/* Apply variables when dark mode is active */
+.dark-mode body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.dark-mode .navbar-dark {
+  background-color: var(--navbar-bg);
+}
+
+.dark-mode .card, 
+.dark-mode .container-fluid, 
+.dark-mode .table {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+  background-color: var(--table-stripe);
+}
+
+.dark-mode .table-hover tbody tr:hover {
+  background-color: var(--table-hover);
+}
+
+.dark-mode a {
+  color: var(--link-color);
+}
+
+.dark-mode a:hover {
+  color: var(--link-hover-color);
+}
+
+.dark-mode .form-control {
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  border-color: var(--input-border);
+}
+
+.dark-mode .btn-primary {
+  background-color: var(--btn-primary-bg);
+  border-color: var(--btn-primary-border);
+}
+
+.dark-mode .btn-success {
+  background-color: var(--btn-success-bg);
+  border-color: var(--btn-success-border);
+}
+
+/* Dark mode toggle styling */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  margin-left: 15px;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  background-color: #444;
+  position: relative;
+}
+
+.theme-toggle.dark {
+  background-color: #111;
+}
+
+.theme-toggle .toggle-icon {
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+.theme-toggle .toggle-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.dark-mode .table-bordered {
+  border-color: var(--border-color);
+}
+
+.dark-mode .table-bordered th,
+.dark-mode .table-bordered td {
+  border-color: var(--border-color);
+}
