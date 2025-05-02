@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     if: >-
       (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@coder')) || 
-      (github.event_name == 'issues' && contains(github.event.issue.body, '@coder_vertex'))
+      (github.event_name == 'issues' && contains(github.event.issue.body, '@vertex'))
     environment: coder-demo
     timeout-minutes: 5
     steps:
