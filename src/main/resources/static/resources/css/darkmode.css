@@ -1,0 +1,55 @@
+/**
+ * Dark mode styles for Spring PetClinic
+ */
+
+/* Theme toggle button styling */
+#theme-toggle {
+  transition: all 0.3s ease;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.05);
+}
+
+#current-mode-indicator {
+  font-size: 0.65em;
+  font-weight: bold;
+}
+
+/* Dark mode specific styles */
+[data-bs-theme="dark"] {
+  --bs-body-bg: #212529;
+  --bs-body-color: #f8f9fa;
+}
+
+[data-bs-theme="dark"] .navbar {
+  background-color: #343a40 !important;
+}
+
+[data-bs-theme="dark"] .container {
+  background-color: #2c3034;
+}
+
+[data-bs-theme="dark"] .table {
+  color: #e9ecef;
+}
+
+[data-bs-theme="dark"] .table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #e9ecef;
+}
+
+[data-bs-theme="dark"] .form-control {
+  background-color: #343a40;
+  color: #e9ecef;
+  border-color: #495057;
+}
+
+[data-bs-theme="dark"] .form-control:focus {
+  background-color: #3d444b;
+  color: #f8f9fa;
+}
+
+[data-bs-theme="dark"] .logo {
+  filter: brightness(0.8) contrast(1.2);
+}
