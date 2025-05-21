@@ -31,6 +31,14 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="main-navbar" style>
+        <div class="theme-toggle-wrapper ms-auto me-2">
+          <span class="theme-toggle-icon fa fa-sun-o" aria-hidden="true"></span>
+          <label class="theme-toggle">
+            <input type="checkbox" id="theme-toggle">
+            <span class="theme-toggle-slider"></span>
+          </label>
+          <span class="theme-toggle-icon fa fa-moon-o" aria-hidden="true"></span>
+        </div>
 
         <ul class="navbar-nav me-auto mb-2 mb-lg-0" th:remove="all">
 
@@ -88,7 +96,33 @@
   </div>
 
   <script th:src="@{/webjars/bootstrap/dist/js/bootstrap.bundle.min.js}"></script>
-
+  <script>
+    // Dark mode toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggleSwitch = document.getElementById('theme-toggle');
+      
+      // Check for saved theme preference or prefer-color-scheme
+      const currentTheme = localStorage.getItem('theme') || 
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      
+      // Apply the saved theme or default
+      if (currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+        toggleSwitch.checked = true;
+      }
+      
+      // Toggle theme when switch is clicked
+      toggleSwitch.addEventListener('change', function() {
+        if (this.checked) {
+          document.documentElement.setAttribute('data-bs-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-bs-theme', 'light');
+          localStorage.setItem('theme', 'light');
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
