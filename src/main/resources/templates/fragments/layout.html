@@ -1,5 +1,5 @@
 <!doctype html>
-<html th:fragment="layout (template, menu)">
+<html th:fragment="layout (template, menu)" data-bs-theme="light">
 
 <head>
 
@@ -19,6 +19,51 @@
 
   <link th:href="@{/webjars/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
   <link rel="stylesheet" th:href="@{/resources/css/petclinic.css}" />
+  
+  <style>
+    /* Dark mode styles */
+    [data-bs-theme="dark"] {
+      --bs-body-bg: #212529;
+      --bs-body-color: #f8f9fa;
+    }
+    
+    [data-bs-theme="dark"] .navbar {
+      background-color: #343a40 !important;
+    }
+    
+    [data-bs-theme="dark"] .container {
+      background-color: #212529;
+      color: #f8f9fa;
+    }
+    
+    [data-bs-theme="dark"] .table {
+      color: #f8f9fa;
+    }
+    
+    [data-bs-theme="dark"] .table-striped > tbody > tr:nth-of-type(odd) {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    [data-bs-theme="dark"] .form-control {
+      background-color: #343a40;
+      color: #f8f9fa;
+      border-color: #6c757d;
+    }
+    
+    [data-bs-theme="dark"] .btn-primary {
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+    }
+    
+    [data-bs-theme="dark"] .btn-secondary {
+      background-color: #6c757d;
+      border-color: #6c757d;
+    }
+    
+    [data-bs-theme="dark"] a {
+      color: #6ea8fe;
+    }
+  </style>
 
 </head>
 
@@ -31,6 +76,14 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="main-navbar" style>
+        <div class="theme-toggle-wrapper ms-auto me-2" style="display: flex;">
+          <span class="theme-toggle-icon fa fa-sun-o" aria-hidden="true"></span>
+          <label class="theme-toggle">
+            <input type="checkbox" id="theme-toggle">
+            <span class="theme-toggle-slider"></span>
+          </label>
+          <span class="theme-toggle-icon fa fa-moon-o" aria-hidden="true"></span>
+        </div>
 
         <ul class="navbar-nav me-auto mb-2 mb-lg-0" th:remove="all">
 
@@ -88,7 +141,33 @@
   </div>
 
   <script th:src="@{/webjars/bootstrap/dist/js/bootstrap.bundle.min.js}"></script>
-
+  <script>
+    // Dark mode toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggleSwitch = document.getElementById('theme-toggle');
+      
+      // Check for saved theme preference or prefer-color-scheme
+      const currentTheme = localStorage.getItem('theme') || 
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      
+      // Apply the saved theme or default
+      if (currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+        toggleSwitch.checked = true;
+      }
+      
+      // Toggle theme when switch is clicked
+      toggleSwitch.addEventListener('change', function() {
+        if (this.checked) {
+          document.documentElement.setAttribute('data-bs-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-bs-theme', 'light');
+          localStorage.setItem('theme', 'light');
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
