@@ -1,0 +1,56 @@
+/**
+ * Light/dark toggle styles for PetClinic application
+ */
+
+/* Toggle button container styles */
+.dark-mode-toggle {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Hide the checkbox input */
+.dark-mode-toggle input {
+  display: none;
+}
+
+/* Icon styles for light/dark mode */
+.dark-mode-toggle i {
+  font-size: 1.5rem;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect on icon */
+.dark-mode-toggle:hover i {
+  transform: scale(1.1);
+}
+
+/* Light mode specific styles */
+[data-bs-theme="light"] .dark-mode-toggle i {
+  color: #495057;
+}
+
+/* Styles for toggle icon animation */
+.dark-mode-toggle i.fa-moon-o {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.dark-mode-toggle i.fa-sun-o {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

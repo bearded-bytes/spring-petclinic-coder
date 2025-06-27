@@ -8,8 +8,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check if user previously selected dark mode
     const isDarkMode = localStorage.getItem('darkMode') === 'true';
     
-    // Set initial state
-    if (isDarkMode) {
+    // Set initial state based on system preference if no preference was saved
+    if (localStorage.getItem('darkMode') === null) {
+        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (prefersDarkMode) {
+            document.documentElement.setAttribute('data-bs-theme', 'dark');
+            if (darkModeToggle) {
+                darkModeToggle.checked = true;
+                updateDarkModeIcon(true);
+            }
+            localStorage.setItem('darkMode', 'true');
+        }
+    } else if (isDarkMode) {
+        // Apply saved preference if available
         document.documentElement.setAttribute('data-bs-theme', 'dark');
         if (darkModeToggle) {
             darkModeToggle.checked = true;
